@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssafy.uploadfile">
+		<insert id="insert" parameterType="UploadFile">
+		insert into uploadfile (contentType, fileName, filePath, regDate, saveFileName,size)
+		values(
+			#{contentType},
+			#{fileName},
+			#{filePath}, 
+			#{regDate},
+			#{saveFileName},
+			#{size}
+		)
+	</insert>
+	
+	<select id="selectList" resultType="UploadFile">
+		select fileId, contentType, fileName, filePath, regDate, saveFileName,size
+		from uploadfile
+	</select>
+	
+	<select id="selectOneByFileName" parameterType="string" resultType="UploadFile">
+		select fileId, contentType, fileName, filePath, regDate, saveFileName,size
+		from uploadfile
+		where fileName = #{fileName}
+	</select>
+
+
+	<select id="selectOne" parameterType="int" resultType="UploadFile">
+		select fileId, contentType, fileName, filePath, regDate, saveFileName,size
+		from uploadfile
+		where 
+			fileId = #{fileId}
+	</select>
+</mapper>
+

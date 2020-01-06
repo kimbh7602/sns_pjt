@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssafy.board">
+		<insert id="insert" parameterType="BoardVo">
+		insert into board (user_id, btitle, bcontent)
+		values(
+			#{user_id},
+			#{btitle},
+			#{bcontent}
+		)
+	</insert>
+	<update id="update" parameterType="BoardVo">
+		update board set 
+			btitle = #{btitle},
+			bcontent = #{bcontent}
+		where
+			bid =#{bid}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from board 
+		where
+		bid =#{bid}
+	</delete>
+
+	<select id="selectList" resultType="BoardVo">
+		select bid, user_id, btitle, bcontent, bcount
+		from board
+	</select>
+
+	<select id="selectOne" parameterType="int" resultType="BoardVo">
+		select bid, user_id, btitle, bcontent, bcount
+		from board
+		where 
+			bid = #{bid}
+	</select>
+	
+	<update id="countUp" parameterType="int">
+		update board set bcount=bcount+1 
+		where 
+			bid=#{bid}
+	</update>
+	<select id="boardSearch" parameterType="string"  resultType="BoardVo">
+		select bid, user_id, btitle, bcontent, bcount
+		from board
+		where 
+		ntitle LIKE %#{keyword}% 
+	</select>
+	
+	<select id="commList" parameterType="int" resultType="CommVo">
+		select cid, ccontent, user_id, bid
+		from comm
+		where
+		bid = #{bid}
+	</select>
+	
+	<insert id="insertComm" parameterType="CommVo">
+		insert into comm (ccontent, user_id, bid)
+		values (
+			#{ccontent},
+			#{user_id},
+			#{bid}
+		)
+	</insert>
+	
+	<delete id="deleteComm" parameterType="int">
+		delete from comm
+		where
+			cid = #{cid}
+	</delete>
+	
+	<update id="updateComm" parameterType="CommVo">
+		update comm set
+			ccontent=#{ccontent}
+		where
+			cid=#{cid}
+	</update>
+</mapper>
+

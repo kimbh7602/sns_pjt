@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ssafy.intake">
+
+	<insert id="insert" parameterType="map">
+		insert into intake (code, id, idate, icount)
+		values(
+			#{code},
+			#{id},
+			current_date(),
+			1
+		)
+	</insert>
+	
+	<update id="updateIcountUp" parameterType="map">
+		update intake
+		set icount = icount+1
+		where
+			code = #{code} and
+			id = #{id} and
+			idate = current_date()
+	</update>
+	
+	<select id="selectIcount" parameterType="map" resultType="TakeinFoodVo">
+		select f.*, i.id, i.idate, i.icount
+		from food as f
+		join intake as i 
+		on (f.code = i.code) 
+		where
+			i.code = #{code} and
+			i.id = #{id} and
+			i.idate = current_date()
+	</select>
+	
+	<select id="selectList" parameterType="string" resultType="TakeinFoodVo">
+		select f.*, i.id, i.idate, i.icount
+		from food as f
+		join intake as i 
+		on (f.code = i.code) 
+		where i.id=#{id} and i.icount>0
+		order by i.idate desc
+	</select>
+	
+	<select id="selectOne" parameterType="map" resultType="TakeinFoodVo">
+		select f.*, i.id, i.idate, i.icount 
+		from food as f 
+		join intake as i 
+		on (f.code = i.code) 
+		where i.code = #{code} and i.id=#{id} and icount>0
+	</select>
+	
+	<select id="selectDeleteIcount" parameterType="map" resultType="TakeinFoodVo">
+		select f.*, i.id, i.idate, i.icount
+		from food as f
+		join intake as i 
+		on (f.code = i.code) 
+		where
+			i.code = #{code} and
+			i.id = #{id} and
+			i.idate = current_date()
+	</select>
+	
+	<update id="updateIcountDown" parameterType="map">
+		update intake
+		set icount = icount-1
+		where
+			code=#{code} and
+			id=#{id} and
+			idate=current_date()
+	</update>
+	
+	<select id="selectIntakeSum" parameterType="string" resultType="TakeinSumVo">
+		select sum(f.calory*i.icount) as calory,
+			sum(f.carbo*i.icount) as carbo,
+			sum(f.protein*i.icount) as protein,
+			sum(f.fat*i.icount) as fat,
+			sum(f.sugar*i.icount) as sugar,
+			sum(f.natrium*i.icount) as natrium,
+			sum(f.chole*i.icount) as chole,
+			sum(f.fattyacid*i.icount) as fattyacid,
+			sum(f.transfat*i.icount) as transfat
+			from food as f 
+			join intake as i 
+			on (f.code = i.code) 
+			where i.id=#{id} and icount>0
+	</select>
+	
+	<select id="selectSearch" parameterType="map" resultType="TakeinFoodVo">
+		select f.*, i.id, i.idate, i.icount 
+		from food as f 
+		join intake as i 
+		on (f.code = i.code) 
+		where i.id=#{id} and icount>0 and f.name like concat('%', #{keyword}, '%')
+	</select>
+	
+	<select id="yearsort" parameterType="map" resultType="TakeinFoodVo">
+		select f.*, i.id, i.idate, i.icount
+		from food as f
+		join intake as i 
+		on (f.code = i.code) 
+		where i.id=#{id} and i.icount>0 and date_format(i.idate, '%Y') = #{selFormat}
+		order by i.idate desc
+	</select>
+	<select id="yearsortSum" parameterType="map" resultType="TakeinSumVo">
+		select sum(f.calory*i.icount) as calory,
+			sum(f.carbo*i.icount) as carbo,
+			sum(f.protein*i.icount) as protein,
+			sum(f.fat*i.icount) as fat,
+			sum(f.sugar*i.icount) as sugar,
+			sum(f.natrium*i.icount) as natrium,
+			sum(f.chole*i.icount) as chole,
+			sum(f.fattyacid*i.icount) as fattyacid,
+			sum(f.transfat*i.icount) as transfat
+			from food as f 
+			join intake as i 
+			on (f.code = i.code) 
+			where i.id=#{id} and icount>0 and date_format(i.idate, '%Y') = #{selFormat}
+	</select>
+	
+	<select id="monthsort" parameterType="map" resultType="TakeinFoodVo">
+		select f.*, i.id, i.idate, i.icount
+		from food as f
+		join intake as i 
+		on (f.code = i.code) 
+		where i.id=#{id} and i.icount>0 and date_format(i.idate, '%m') = #{selFormat}
+		order by i.idate desc
+	</select>
+	<select id="monthsortSum" parameterType="map" resultType="TakeinSumVo">
+		select sum(f.calory*i.icount) as calory,
+			sum(f.carbo*i.icount) as carbo,
+			sum(f.protein*i.icount) as protein,
+			sum(f.fat*i.icount) as fat,
+			sum(f.sugar*i.icount) as sugar,
+			sum(f.natrium*i.icount) as natrium,
+			sum(f.chole*i.icount) as chole,
+			sum(f.fattyacid*i.icount) as fattyacid,
+			sum(f.transfat*i.icount) as transfat
+			from food as f 
+			join intake as i 
+			on (f.code = i.code) 
+			where i.id=#{id} and icount>0 and date_format(i.idate, '%m') = #{selFormat}
+	</select>
+	
+	<select id="todaysort" parameterType="map" resultType="TakeinFoodVo">
+		select f.*, i.id, i.idate, i.icount
+		from food as f
+		join intake as i 
+		on (f.code = i.code) 
+		where i.id=#{id} and i.icount>0 and date_format(i.idate, '%d') = #{selFormat}
+		order by i.idate desc
+	</select>
+	<select id="todaysortSum" parameterType="map" resultType="TakeinSumVo">
+		select sum(f.calory*i.icount) as calory,
+			sum(f.carbo*i.icount) as carbo,
+			sum(f.protein*i.icount) as protein,
+			sum(f.fat*i.icount) as fat,
+			sum(f.sugar*i.icount) as sugar,
+			sum(f.natrium*i.icount) as natrium,
+			sum(f.chole*i.icount) as chole,
+			sum(f.fattyacid*i.icount) as fattyacid,
+			sum(f.transfat*i.icount) as transfat
+			from food as f 
+			join intake as i 
+			on (f.code = i.code) 
+			where i.id=#{id} and icount>0 and date_format(i.idate, '%d') = #{selFormat}
+	</select>
+	
+	
+</mapper>

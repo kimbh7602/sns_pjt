@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="edu.ssafy.boot.dto.FoodVo" alias="FoodVo" />
+		<typeAlias type="edu.ssafy.boot.dto.MemVo" alias="MemVo" />
+		<typeAlias type="edu.ssafy.boot.dto.TakeinFoodVO" alias="TakeinFoodVo" />
+		<typeAlias type="edu.ssafy.boot.dto.TakeinSumVo" alias="TakeinSumVo" />
+		<typeAlias type="edu.ssafy.boot.dto.NoticeVo" alias="NoticeVo" />
+		<typeAlias type="edu.ssafy.boot.dto.BoardVo" alias="BoardVo" />
+		<typeAlias type="edu.ssafy.boot.dto.CommVo" alias="CommVo" />
+		<typeAlias type="edu.ssafy.boot.dto.RecipeBoardVo" alias="RecipeBoardVo" />
+		<typeAlias type="edu.ssafy.boot.dto.UploadFile" alias="UploadFile" />
+		<typeAlias type="edu.ssafy.boot.dto.ContentVo" alias="ContentVo" />
+		
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="mybatis/foodSQLMapper.xml" />
+		<mapper resource="mybatis/memberSQLMapper.xml" />
+		<mapper resource="mybatis/intakeSQLMapper.xml" />
+		<mapper resource="mybatis/noticeSQLMapper.xml" />
+		<mapper resource="mybatis/boardSQLMapper.xml" />
+		<mapper resource="mybatis/recipeboardSQLMapper.xml" />
+		<mapper resource="mybatis/uploadfileSQLMapper.xml" />
+		<mapper resource="mybatis/contentSQLMapper.xml" />
+		
+	</mappers>
+</configuration>
