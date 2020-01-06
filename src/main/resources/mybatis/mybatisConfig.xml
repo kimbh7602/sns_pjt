@@ -4,28 +4,18 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias type="edu.ssafy.boot.dto.FoodVo" alias="FoodVo" />
-		<typeAlias type="edu.ssafy.boot.dto.MemVo" alias="MemVo" />
-		<typeAlias type="edu.ssafy.boot.dto.TakeinFoodVO" alias="TakeinFoodVo" />
-		<typeAlias type="edu.ssafy.boot.dto.TakeinSumVo" alias="TakeinSumVo" />
-		<typeAlias type="edu.ssafy.boot.dto.NoticeVo" alias="NoticeVo" />
-		<typeAlias type="edu.ssafy.boot.dto.BoardVo" alias="BoardVo" />
-		<typeAlias type="edu.ssafy.boot.dto.CommVo" alias="CommVo" />
-		<typeAlias type="edu.ssafy.boot.dto.RecipeBoardVo" alias="RecipeBoardVo" />
-		<typeAlias type="edu.ssafy.boot.dto.UploadFile" alias="UploadFile" />
 		<typeAlias type="edu.ssafy.boot.dto.ContentVo" alias="ContentVo" />
-		
+		<typeAlias type="edu.ssafy.boot.dto.CommentVo" alias="CommentVo" />
+		<typeAlias type="edu.ssafy.boot.dto.UserVo" alias="UserVo" />
+		<typeAlias type="edu.ssafy.boot.dto.ScrapVo" alias="ScrapVo" />
+		<typeAlias type="edu.ssafy.boot.dto.FollowVo" alias="FollowVo" />
 	</typeAliases>
 
 	<mappers>
-		<mapper resource="mybatis/foodSQLMapper.xml" />
-		<mapper resource="mybatis/memberSQLMapper.xml" />
-		<mapper resource="mybatis/intakeSQLMapper.xml" />
-		<mapper resource="mybatis/noticeSQLMapper.xml" />
-		<mapper resource="mybatis/boardSQLMapper.xml" />
-		<mapper resource="mybatis/recipeboardSQLMapper.xml" />
-		<mapper resource="mybatis/uploadfileSQLMapper.xml" />
 		<mapper resource="mybatis/contentSQLMapper.xml" />
-		
+		<mapper resource="mybatis/commentSQLMapper.xml" />
+		<mapper resource="mybatis/userSQLMapper.xml" />
+		<mapper resource="mybatis/scrapSQLMapper.xml" />
+		<mapper resource="mybatis/followSQLMapper.xml" />
 	</mappers>
 </configuration>
