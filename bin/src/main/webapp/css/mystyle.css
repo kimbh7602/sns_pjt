@@ -1,0 +1,130 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'BMHANNAAir';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html * {
+	font-family: 'BMHANNAAir';
+}
+
+body {
+	padding-top: 70px;
+}
+
+.dropdown-menu {
+	width: 350px;
+	height: 370px;
+}
+
+.material {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 120px;
+}
+
+a:hover {
+	background-color: #5BC0DE;
+	color: white;
+	font-style: normal;
+}
+
+.image {
+	display: block;
+	width: 200%;
+	height: auto;
+}
+
+.overlay {
+	opacity: 0;
+	transition: .5s ease;
+}
+
+.container:hover .overlay {
+	opacity: 0.3;
+}
+
+.text {
+	font-size: 30px;
+	text-align: center;
+}
+
+.jumbotron {
+	background-color: #eef8ff;
+	text-align: center;
+	padding: 20px;
+	box-shadow: 0 10px 6px -6px #999;
+}
+
+.form-group .control-label:after {
+	content: "*";
+	color: red;
+}
+
+div.ex {
+	background-color: #ccc;
+	width: 600px;
+	height: 440px;
+	padding: 50px;
+	border-style: outset;
+	margin: 70px 0px;
+	position: absolute;
+	left: 30%;
+}
+
+th, td {
+	vertical-align: middle !important;
+}
+
+th {
+	white-space: nowrap;
+	text-align: center;
+}
+
+a.productName:link {
+	color: black;
+	text-decoration: none;
+}
+
+a.productName:visited {
+	color: black;
+	text-decoration: none;
+}
+
+a.productName:hover {
+	color: #337ab7;
+	text-decoration: underline;
+}
+
+a.productName:hover:after {
+	color: white;
+	background-color: black;
+}
+
+#dropdownFood {
+	background: black;
+	width:80px;
+	height:100px;
+}
+
+#dropdownFood ul {
+	list-style-type: none;
+	background: black;
+}
+#dropdownFood ul li{
+	background: black;
+}
+#dropdownFood ul li a{
+	color: white;
+	font-size: 20px;
+}
+
+#navFood{
+	font-size : 105%;
+}
+

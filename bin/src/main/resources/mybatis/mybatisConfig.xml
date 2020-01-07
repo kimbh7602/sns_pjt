@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="edu.ssafy.boot.dto.ContentVo" alias="ContentVo" />
+		<typeAlias type="edu.ssafy.boot.dto.CommentVo" alias="CommentVo" />
+		<typeAlias type="edu.ssafy.boot.dto.UserVo" alias="UserVo" />
+		<typeAlias type="edu.ssafy.boot.dto.ScrapVo" alias="ScrapVo" />
+		<typeAlias type="edu.ssafy.boot.dto.FollowVo" alias="FollowVo" />
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="mybatis/contentSQLMapper.xml" />
+		<mapper resource="mybatis/commentSQLMapper.xml" />
+		<mapper resource="mybatis/userSQLMapper.xml" />
+		<mapper resource="mybatis/scrapSQLMapper.xml" />
+		<mapper resource="mybatis/followSQLMapper.xml" />
+	</mappers>
+</configuration>

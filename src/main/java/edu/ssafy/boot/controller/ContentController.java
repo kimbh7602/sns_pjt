@@ -28,13 +28,13 @@ public class ContentController {
 	
 	@Autowired
 	@Qualifier("ContentService")
-	IContentService cSer;
+	IContentService ser;
 	
 	@GetMapping("/contentMyList/{user_id}")
 	private @ResponseBody ResponseEntity<Map<String, Object>> contentMyList(@PathVariable("user_id") String user_id) throws ServletException, IOException {
 		ResponseEntity<Map<String, Object>> resEntity = null;
 		Map<String, Object> msg = new HashMap<String, Object>();
-		List<ContentVo> list = cSer.contentMyList(user_id);
+		List<ContentVo> list = ser.contentMyList(user_id);
 		msg.put("resmsg", "타임라인 출력 성공");
 		msg.put("resvalue", list);
 		resEntity = new ResponseEntity<Map<String,Object>>(msg, HttpStatus.OK);

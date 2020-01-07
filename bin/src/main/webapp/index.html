@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+@font-face {
+	font-family: 'BMHANNAAir';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.0/BMHANNAAir.woff')
+		format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+html * {
+	font-family: 'BMHANNAAir';
+}
+
+body {
+	padding-top: 70px;
+}
+
+.dropdown-menu {
+	width: 350px;
+	height: 370px;
+}
+
+.material {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 120px;
+}
+
+a:hover {
+	background-color: #5BC0DE;
+	color: white;
+	font-style: normal;
+}
+
+a.productName:hover:after {
+	color: white;
+	background-color: black;
+}
+
+.image {
+	display: block;
+	width: 200%;
+	height: auto;
+}
+
+.overlay {
+	opacity: 0;
+	transition: .5s ease;
+}
+
+.container:hover .overlay {
+	opacity: 0.3;
+}
+
+.text {
+	font-size: 30px;
+	text-align: center;
+}
+
+.jumbotron {
+	background-color: #eef8ff;
+	text-align: center;
+	padding: 20px;
+	box-shadow: 0 10px 6px -6px #999;
+}
+</style>
+
+<script>
+	$(document).ready(function() {
+		$.ajax({
+			type : "get",
+			url : "res/FoodInfo.xml",
+			dataType : "xml",
+			success : resXml,
+			error : eXml
+		});
+	});
+
+	function eXml(s) {
+		console.log(s);
+	}
+
+	var i = 0;
+
+	function resXml(data) { //앞에 여섯개만 메인에 보여주기
+		$(data)
+				.find('food')
+				.each(
+						function(ret) {
+							var code = $("code", this).text();
+							var name = $("name", this).text();
+							var maker = $("maker", this).text();
+							var material = $("material", this).text();
+							var image = $("image", this).text();
+
+							if (code % 2 == 1 && i < 6) {
+								var product = '<div class="col-sm-6 col-md-4">';
+								product += '<div class="thumbnail" style="border:none;">';
+								product += '<div class="overlay">';
+								product += '<p class="text">' + name + '</p>';
+								product += '</div>';
+								product += '<img src="' + image + '" alt="' + name + '">';
+								product += '<div class="caption text-center">';
+								product += '<a href="productdetail.html?name='
+										+ name
+										+ '" class="btn btn-lg btn-block">';
+								product += '<font color="white">상품 정보로 이동 <i class="glyphicon glyphicon-arrow-right"></i></font>';
+								product += '</a>';
+								product += '</div>';
+								product += '</div>';
+								product += '</div>';
+
+								i++;
+								$(".productRow").append(product);
+							}
+						});
+	}
+</script>
+
+<title>Main</title>
+
+</head>
+
+<body>
+	<div class="container">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html" style="padding: 5px;">
+						<img alt="Brand" src="img/ssafy_logo.png"
+						style="max-height: 40px;">
+					</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse"
+					id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<li><a href="notice_list.html">공지 사항 <span
+								class="sr-only">(current)</span></a></li>
+						<li><a href="productinfo.html">상품 정보</a></li>
+						<li><a href="bestintakeinfo.html">베스트 섭취 정보</a></li>
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li><a class="btn btn-sm" href="./SignUp.html"> <span
+								class="glyphicon glyphicon-user" aria-hidden="true"></span> <span>&nbsp;Sign
+									Up</span>
+						</a></li>
+						<li>
+							<ul class="nav navbar-nav pull-right">
+								<li class="dropdown" id="menuLogin"><a
+									class="btn btn-sm dropdown-toggle" href="#"
+									data-toggle="dropdown" id="navLogin"> <span
+										class="glyphicon glyphicon-lock" aria-hidden="true"></span> <span>&nbsp;Login</span>
+								</a>
+									<div class="dropdown-menu" style="padding: 17px;">
+										<form>
+											<div class="form-group">
+												<label for="id">아이디</label> <input type="email"
+													class="form-control" id="id" placeholder="Email">
+											</div>
+											<div class="form-group">
+												<label for="pw">패스워드</label> <input type="password"
+													class="form-control" id="pw" placeholder="Password">
+											</div>
+											<div class="form-group">
+												<button type="submit" class="btn btn-block btn-primary">로그인</button>
+											</div>
+										</form>
+										<a href="./findid.html" class="btn btn-block btn-warning">아이디
+											찾기</a> <a href="./updatepersonalinfo.html"
+											class="btn btn-block btn-info">회원정보 수정 </a> <a
+											href="./deleteinfo.html" class="btn btn-block btn-danger">회원정보
+											삭제 </a>
+									</div></li>
+							</ul>
+						</li>
+					</ul>
+
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container-fluid -->
+		</nav>
+
+
+		<div class="jumbotron">
+			<h1>
+				WHAT WE <strong style="color: #4d7d5a;">PROVIDE</strong>
+			</h1>
+			<hr>
+			<p>건강한 삶을 위한 먹거리 프로젝트</p>
+		</div>
+
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<div class="row productRow"></div>
+			</div>
+		</div>
+	</div>
+
+
+	<footer style="background: #ececec; padding: 50px;">
+		<h1>Find Us</h1>
+		<hr>
+		<p>
+			<i class="glyphicon glyphicon-envelope"></i> (SSAFY) 서울시 강남구 테헤란로
+			멀티스퀘어
+		</p>
+		<p>
+			<i class="glyphicon glyphicon-envelope"></i> 1544-9001
+		</p>
+		<p>
+			<i class="glyphicon glyphicon-envelope"></i> admin@ssafy.com
+		</p>
+	</footer>
+</body>
+</html>

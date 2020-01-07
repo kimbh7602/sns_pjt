@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.3" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="edu.ssafy.boot.dto.BoardVo" project="SafeFood_Web_Spring" 
+    file="/SafeFood_Web_Spring/src/main/java/edu/ssafy/boot/dto/BoardVo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="194" x="317" y="120"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="edu.ssafy.boot.service.BoardService" project="SafeFood_Web_Spring" 
+    file="/SafeFood_Web_Spring/src/main/java/edu/ssafy/boot/service/BoardService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="261" width="241" x="917" y="120"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <interface id="3" language="java" name="edu.ssafy.boot.service.IBoardService" project="SafeFood_Web_Spring" 
+    file="/SafeFood_Web_Spring/src/main/java/edu/ssafy/boot/service/IBoardService.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="243" width="241" x="734" y="583"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <interface id="4" language="java" name="edu.ssafy.boot.repository.IBoardDAO" project="SafeFood_Web_Spring" 
+    file="/SafeFood_Web_Spring/src/main/java/edu/ssafy/boot/repository/IBoardDAO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="243" width="241" x="1057" y="583"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </interface>  
+  <class id="5" language="java" name="edu.ssafy.boot.controller.RestBoardController" project="SafeFood_Web_Spring" 
+    file="/SafeFood_Web_Spring/src/main/java/edu/ssafy/boot/controller/RestBoardController.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="243" width="326" x="551" y="120"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="edu.ssafy.boot.repository.BoardDaoDBImpl" project="SafeFood_Web_Spring" 
+    file="/SafeFood_Web_Spring/src/main/java/edu/ssafy/boot/repository/BoardDaoDBImpl.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="279" width="241" x="1198" y="120"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <realization id="7">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </realization>  
+  <association id="8">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="9" name="dao"/>      
+      <multiplicity id="10" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="11">    
+    <end type="SOURCE" refId="5" navigable="false">      
+      <attribute id="12" name="bSer"/>      
+      <multiplicity id="13" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="3" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="14">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="4"/>  
+  </realization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
